@@ -11,6 +11,6 @@ class NotFoundController extends Controller
 
     public function blankpage()
     {
-        return view('404.blank_page');
+        return view('404.blankpage');
     }
 }

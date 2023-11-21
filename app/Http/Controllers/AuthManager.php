@@ -16,7 +16,7 @@ class AuthManager extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return view('layouts.main');
+            return route('viewDashboard');
         } else {
             return view('authentication.login');
         }
@@ -29,8 +29,10 @@ class AuthManager extends Controller
             'password' => $request->input('password'),
         ];
 
+
         if (Auth::Attempt($data)) {
-            return view('layouts.main');
+            $user = Auth::user();
+            return redirect()->route('viewDashboard');
         } else {
             Session::flash('error', 'Email atau Password Salah');
             return redirect('/');
@@ -67,10 +69,40 @@ class AuthManager extends Controller
     }
     // End Register Controller
 
+    // Validate Email Controller
+    public function validateemail(Request $request)
+    {
+        $email = $request->input('email');
+
+        $userExists = User::where('email', $email)->exists();
+
+        if ($userExists) {
+            return view('authentication.resetpassword');
+        } else {
+            Session::flash('message', 'Email tidak terdaftar.');
+            return view('authentication.forgotpassword');
+        }
+    }
+
+    // End Validate Email Controller
+
     // Forgot Password Controller
     public function forgot()
     {
-        return view('authentication.forgot_password');
+        return view('authentication.forgotpassword');
     }
     // End Forgot Password Controller
+
+    // Forgot Password Controller
+    public function resetPassword()
+    {
+        return view('authentication.resetpassword');
+    }
+    // End Forgot Password Controller
+
+    // Forgot Reset Password Controller
+    public function actionResetPassword()
+    {
+    }
+    // End Reset Password Controller
 }

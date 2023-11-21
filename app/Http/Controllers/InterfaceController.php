@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class InterfaceController extends Controller
 {
+    public function viewDashboard()
+    {
+        return view('layouts.main');
+    }
     public function viewButtonPage()
     {
         return view('interface.buttonpage');
@@ -32,5 +38,15 @@ class InterfaceController extends Controller
     public function viewOtherPage()
     {
         return view('interface.otherpage');
+    }
+
+    public function viewTablePage()
+    {
+        return view('interface.tablespage');
+    }
+
+    public function viewChartPage()
+    {
+        return view('interface.chartpage');
     }
 }

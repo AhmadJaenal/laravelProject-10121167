@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Border Utilities</title>
+    <title>SB Admin 2 - Charts</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,7 +31,6 @@
         @include('partials.sidebar')
         <!-- End of Sidebar -->
 
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -42,114 +41,72 @@
                 @include('header.header')
                 <!-- End of Topbar -->
 
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">Border Utilities</h1>
-                    <p class="mb-4">Bootstrap's default utility classes can be found on the official <a
-                            href="https://getbootstrap.com/docs">Bootstrap Documentation</a> page. The custom utilities
-                        below were created to extend this theme past the default utility classes built into Bootstrap's
-                        framework.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Charts</h1>
+                    <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this
+                        theme.
+                        The charts below have been customized - for further customization options, please visit the <a
+                            target="_blank" href="https://www.chartjs.org/docs/latest/">official Chart.js
+                            documentation</a>.</p>
 
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Border Left Utilities -->
-                        <div class="col-lg-6">
+                        <div class="col-xl-8 col-lg-7">
 
-                            <div class="card mb-4 py-3 border-left-primary">
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
+                                </div>
                                 <div class="card-body">
-                                    .border-left-primary
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    Styling for the area chart can be found in the
+                                    <code>/js/demo/chart-area-demo.js</code> file.
                                 </div>
                             </div>
 
-                            <div class="card mb-4 py-3 border-left-secondary">
-                                <div class="card-body">
-                                    .border-left-secondary
+                            <!-- Bar Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
                                 </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-success">
                                 <div class="card-body">
-                                    .border-left-success
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-info">
-                                <div class="card-body">
-                                    .border-left-info
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-warning">
-                                <div class="card-body">
-                                    .border-left-warning
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-danger">
-                                <div class="card-body">
-                                    .border-left-danger
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-dark">
-                                <div class="card-body">
-                                    .border-left-dark
+                                    <div class="chart-bar">
+                                        <canvas id="myBarChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    Styling for the bar chart can be found in the
+                                    <code>/js/demo/chart-bar-demo.js</code> file.
                                 </div>
                             </div>
 
                         </div>
 
-                        <!-- Border Bottom Utilities -->
-                        <div class="col-lg-6">
-
-                            <div class="card mb-4 py-3 border-bottom-primary">
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
                                 <div class="card-body">
-                                    .border-bottom-primary
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    Styling for the donut chart can be found in the
+                                    <code>/js/demo/chart-pie-demo.js</code> file.
                                 </div>
                             </div>
-
-                            <div class="card mb-4 py-3 border-bottom-secondary">
-                                <div class="card-body">
-                                    .border-bottom-secondary
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-success">
-                                <div class="card-body">
-                                    .border-bottom-success
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-info">
-                                <div class="card-body">
-                                    .border-bottom-info
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-warning">
-                                <div class="card-body">
-                                    .border-bottom-warning
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-danger">
-                                <div class="card-body">
-                                    .border-bottom-danger
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-dark">
-                                <div class="card-body">
-                                    .border-bottom-dark
-                                </div>
-                            </div>
-
                         </div>
-
                     </div>
 
                 </div>
@@ -208,6 +165,14 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-bar-demo.js"></script>
 
 </body>
 

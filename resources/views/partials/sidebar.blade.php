@@ -13,8 +13,8 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item {{ request()->routeIs(['viewDashboard']) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('viewDashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -28,33 +28,40 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+    <li class="nav-item {{ request()->routeIs(['viewButtonPage', 'viewCardPage']) ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Components</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="{{ route('viewButtonPage')}}">Buttons</a>
-                <a class="collapse-item" href="{{ route('viewCardPage')}}">Cards</a>
+                <a class="collapse-item" href="{{ route('viewButtonPage') }}">Buttons</a>
+                <a class="collapse-item" href="{{ route('viewCardPage') }}">Cards</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+    <li
+        class="nav-item {{ request()->routeIs(['viewColorPage', 'viewBorderPage', 'viewBorderPage', 'viewAnimationPage', 'viewOtherPage']) ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Utilities</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="{{ route('viewColorPage')}}">Colors</a>
-                <a class="collapse-item" href="{{ route('viewBorderPage')}}">Borders</a>
-                <a class="collapse-item" href="{{ route('viewAnimationPage')}}">Animations</a>
-                <a class="collapse-item" href="{{ route('viewOtherPage')}}">Other</a>
+                <a class="collapse-item {{ request()->routeIs('viewColorPage') ? 'active' : '' }}"
+                    href="{{ route('viewColorPage') }}">Colors</a>
+                <a class="collapse-item {{ request()->routeIs('viewBorderPage') ? 'active' : '' }}"
+                    href="{{ route('viewBorderPage') }}">Borders</a>
+                <a class="collapse-item {{ request()->routeIs('viewAnimationPage') ? 'active' : '' }}"
+                    href="{{ route('viewAnimationPage') }}">Animations</a>
+                <a class="collapse-item {{ request()->routeIs('viewOtherPage') ? 'active' : '' }}"
+                    href="{{ route('viewOtherPage') }}">Other</a>
             </div>
         </div>
     </li>
@@ -68,35 +75,43 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+    <li id="pagesCollapse"
+        class="nav-item {{ request()->routeIs(['login', 'register', 'forgot', 'notfound', 'blankpage']) ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+            aria-expanded="false" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>Pages</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="{{ route('login')}}">Login</a>
-                <a class="collapse-item" href="{{ route('register')}}">Register</a>
-                <a class="collapse-item" href="{{ route('forgot')}}">Forgot Password</a>
+                <a class="collapse-item {{ request()->routeIs('login') ? 'active' : '' }}"
+                    href="{{ route('login') }}">Login</a>
+                <a class="collapse-item {{ request()->routeIs('register') ? 'active' : '' }}"
+                    href="{{ route('register') }}">Register</a>
+                <a class="collapse-item {{ request()->routeIs('forgot') ? 'active' : '' }}"
+                    href="{{ route('forgot') }}">Forgot Password</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="{{ route('notfound')}}">404 Page</a>
-                <a class="collapse-item" href="{{ route('blankpage')}}">Blank Page</a>
+                <a class="collapse-item {{ request()->routeIs('notfound') ? 'active' : '' }}"
+                    href="{{ route('notfound') }}"> Page</a>
+                <a class="collapse-item {{ request()->routeIs('blankpage') ? 'active' : '' }}"
+                    href="{{ route('blankpage') }}">Blank Page</a>
             </div>
         </div>
     </li>
 
+
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+    <li class="nav-item {{ request()->routeIs('viewChartPage') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('viewChartPage') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Charts</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item {{ request()->routeIs('viewTablePage') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('viewTablePage') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
     </li>
@@ -112,7 +127,8 @@
     <!-- Sidebar Message -->
     <div class="sidebar-card d-none d-lg-flex">
         <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!
+        </p>
         <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
     </div>
 
