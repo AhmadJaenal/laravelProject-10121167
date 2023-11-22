@@ -48,7 +48,7 @@
                                             {{ session('message') }}
                                         </div>
                                     @endif
-                                    <form class="user" method="post" action="{{ route('validateemail') }}">
+                                    <form class="user" action="{{ route('validateemail') }}" method="get">
                                         @csrf
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user" id="email"

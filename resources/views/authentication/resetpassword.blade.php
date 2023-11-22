@@ -43,14 +43,25 @@
                                         <p class="mb-4">We get it, stuff happens. Just enter your email address below
                                             and we'll send you a link to reset your password!</p>
                                     </div>
+                                    @if (session('message'))
+                                        <div class="alert alert-success">
+                                            {{ session('message') }}
+                                        </div>
+                                    @endif
                                     <form class="user">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user" id="email"
+                                                aria-describedby="emailHelp" placeholder="Enter Email Address..."
+                                                name="email" value="{{ session('reset_email') }}" readonly>
+                                        </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" id="password"
-                                                aria-describedby="emailHelp" placeholder="Enter New Password...">
+                                                aria-describedby="emailHelp" placeholder="Enter New Password..."
+                                                name="password">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">Save New
                                             Password</button>
-
                                     </form>
                                 </div>
                             </div>
