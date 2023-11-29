@@ -6,47 +6,48 @@ use Illuminate\Http\Request;
 
 class InterfaceController extends Controller
 {
-    public function viewDashboard()
+    public function viewLandingPage()
     {
-        return view('layouts.main');
-    }
-    public function viewButtonPage()
-    {
-        return view('interface.buttonpage');
+        return view('interface.landingpage');
     }
 
-    public function viewCardPage()
+    public function viewShopPage()
     {
-        return view('interface.cardpage');
+        return view('interface.shoppage');
     }
 
-    public function viewColorPage()
+    public function viewAboutPage()
     {
-        return view('interface.colorpage');
+        return view('interface.about');
     }
 
-    public function viewBorderPage()
+    public function viewServicePage()
     {
-        return view('interface.borderpage');
+        return view('interface.servicepage');
     }
 
-    public function viewAnimationPage()
+    public function viewBlogPage()
     {
-        return view('interface.animationpage');
+        return view('interface.blogpage');
     }
 
-    public function viewOtherPage()
+    public function viewContactPage()
     {
-        return view('interface.otherpage');
+        return view('interface.contact');
     }
 
-    public function viewTablePage()
+    public function viewCheckoutPage()
     {
-        return view('interface.tablespage');
+        return view('interface.checkout');
     }
 
-    public function viewChartPage()
+    public function viewCartPage()
     {
-        return view('interface.chartpage');
+        return view('interface.cartpage');
+    }
+
+    public function viewThankYouPage()
+    {
+        return view('interface.thankyou');
     }
 }

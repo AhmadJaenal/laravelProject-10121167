@@ -6,7 +6,7 @@ use App\Http\Controllers\InterfaceController;
 use Illuminate\Support\Facades\Route;
 
 // LOGIN
-Route::get('/', [AuthManager::class, 'login'])->name('login');
+Route::get('login', [AuthManager::class, 'login'])->name('login');
 Route::post('actionlogin', [AuthManager::class, 'actionlogin'])->name('actionlogin');
 Route::get('actionlogout', [AuthManager::class, 'actionlogout'])->name('actionlogout');
 
@@ -20,17 +20,14 @@ Route::get('validateemail', [AuthManager::class, 'validateemail'])->name('valida
 Route::post('resetpassword', [AuthManager::class, 'resetpassword'])->name('resetpassword');
 Route::post('actionResetPassword', [AuthManager::class, 'actionResetPassword'])->name('actionResetPassword');
 
-// 404 
-Route::get('notfound', [NotFoundController::class, 'notfound'])->name('notfound');
-Route::get('blankpage', [NotFoundController::class, 'blankpage'])->name('blankpage');
-
 // INTERFACE
+Route::get('/', [InterfaceController::class, 'viewLandingPage'])->name('viewLandingPage');
 Route::get('viewDashboard', [InterfaceController::class, 'viewDashboard'])->name('viewDashboard');
-Route::get('viewButtonPage', [InterfaceController::class, 'viewButtonPage'])->name('viewButtonPage');
-Route::get('viewCardPage', [InterfaceController::class, 'viewCardPage'])->name('viewCardPage');
-Route::get('viewColorPage', [InterfaceController::class, 'viewColorPage'])->name('viewColorPage');
-Route::get('viewBorderPage', [InterfaceController::class, 'viewBorderPage'])->name('viewBorderPage');
-Route::get('viewAnimationPage', [InterfaceController::class, 'viewAnimationPage'])->name('viewAnimationPage');
-Route::get('viewOtherPage', [InterfaceController::class, 'viewOtherPage'])->name('viewOtherPage');
-Route::get('viewChartPage', [InterfaceController::class, 'viewChartPage'])->name('viewChartPage');
-Route::get('viewTablePage', [InterfaceController::class, 'viewTablePage'])->name('viewTablePage');
+Route::get('viewShopPage', [InterfaceController::class, 'viewShopPage'])->name('viewShopPage');
+Route::get('viewAboutPage', [InterfaceController::class, 'viewAboutPage'])->name('viewAboutPage');
+Route::get('viewServicePage', [InterfaceController::class, 'viewServicePage'])->name('viewServicePage');
+Route::get('viewBlogPage', [InterfaceController::class, 'viewBlogPage'])->name('viewBlogPage');
+Route::get('viewContactPage', [InterfaceController::class, 'viewContactPage'])->name('viewContactPage');
+Route::get('viewCheckoutPage', [InterfaceController::class, 'viewCheckoutPage'])->name('viewCheckoutPage');
+Route::get('viewCartPage', [InterfaceController::class, 'viewCartPage'])->name('viewCartPage');
+Route::get('viewThankYouPage', [InterfaceController::class, 'viewThankYouPage'])->name('viewThankYouPage');

@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body>
 
     <div class="container">
 
@@ -31,7 +31,7 @@
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card o-hidden border-0 shadow-lg my-4">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">

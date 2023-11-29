@@ -16,7 +16,7 @@ class AuthManager extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return route('viewDashboard');
+            return route('/');
         } else {
 
             return view('authentication.login');
@@ -33,7 +33,7 @@ class AuthManager extends Controller
 
         if (Auth::Attempt($data)) {
             $user = Auth::user();
-            return redirect()->route('viewDashboard');
+            return redirect()->route('viewLandingPage');
         } else {
             Session::flash('error', 'Email atau Password Salah');
             return redirect('/');
