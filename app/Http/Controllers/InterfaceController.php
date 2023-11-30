@@ -11,11 +11,6 @@ class InterfaceController extends Controller
         return view('interface.landingpage');
     }
 
-    public function viewShopPage()
-    {
-        return view('interface.shoppage');
-    }
-
     public function viewAboutPage()
     {
         return view('interface.about');

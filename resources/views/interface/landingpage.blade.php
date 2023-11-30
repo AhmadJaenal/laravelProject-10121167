@@ -30,6 +30,11 @@
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt">
+                        @auth
+                            <h1>{{ auth()->user()->name }}</h1>
+                        @else
+                            <h1>Tamu</h1>
+                        @endauth
                         <h1>Elevate Your Game<span clsas="d-block"> Elevate Your Life.</span></h1>
                         <p class="mb-4">Find a complete collection of high-quality exercise equipment at Gearo
                             We provide the best equipment to help you achieve your fitness goals. From cardio equipment

@@ -14,8 +14,8 @@
                 <li class="nav-item {{ request()->routeIs('viewLandingPage') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('viewLandingPage') }}">Home</a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('viewShopPage') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('viewShopPage') }}">Shop</a>
+                <li class="nav-item {{ request()->routeIs('fetchData') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('fetchData') }}">Shop</a>
                 </li>
                 <li class="nav-item {{ request()->is('viewAboutPage') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('viewAboutPage') }}">About us</a>
@@ -33,11 +33,22 @@
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                 <div class="btn-group mx-4">
-                    <img src="img/icon_user.svg" width="20px" data-bs-toggle="dropdown">
+                    @auth
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ auth()->user()->name }}
+                        </a>
+                    @else
+                        <img src="img/icon_user.svg" width="20px" data-bs-toggle="dropdown">
+                    @endauth
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Setting</a></li>
-                        <li><a class="dropdown-item" href="{{ route('login') }}">Log Out</a></li>
+                        @auth
+                            <li><a class="dropdown-item" href="/">Log Out</a></li>
+                        @else
+                            <li><a class="dropdown-item" href="/">Log In</a></li>
+                        @endauth
                     </ul>
                 </div>
                 <li><a class="nav-link" href="{{ route('viewCartPage') }}"><img src="img/icon_cart.svg"

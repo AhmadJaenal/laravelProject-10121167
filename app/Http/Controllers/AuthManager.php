@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
@@ -23,22 +24,22 @@ class AuthManager extends Controller
         }
     }
 
+
     public function actionlogin(Request $request)
     {
-        $data = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-        ];
+        $credentials =  $request->validate([
+            'email' => 'required|email:dns',
+            'password' => 'required'
+        ]);
 
-
-        if (Auth::Attempt($data)) {
-            $user = Auth::user();
-            return redirect()->route('viewLandingPage');
-        } else {
-            Session::flash('error', 'Email atau Password Salah');
-            return redirect('/');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('viewLandingPage');
         }
+
+        return back()->with('error', 'Login Fail');
     }
+
 
     // End Login Controller
 
@@ -56,18 +57,31 @@ class AuthManager extends Controller
         return view('authentication.register');
     }
 
+
     public function actionregister(Request $request)
     {
-        $user = User::create([
-            'email' => $request->email,
-            'name' => $request->name,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
-        ]);
+        try {
+            $user = User::create([
+                'email' => $request->email,
+                'name' => $request->name,
+                'password' => Hash::make($request->password),
+            ]);
 
-        Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
-        return redirect('register');
+            Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
+            return redirect('register');
+        } catch (QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+
+            if ($errorCode == 1062) {
+                Session::flash('error', 'Gagal melakukan register. Email sudah terdaftar.');
+            } else {
+                Session::flash('error', 'Gagal melakukan register. Terjadi kesalahan.');
+            }
+
+            return redirect('register');
+        }
     }
+
     // End Register Controller
 
     // Validate Email Controller
