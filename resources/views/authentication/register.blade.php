@@ -37,9 +37,9 @@
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
                             <hr>
-                            @if (session('message'))
+                            @if (session('success'))
                                 <div class="alert alert-success">
-                                    {{ session('message') }}
+                                    {{ session('success') }}
                                 </div>
                             @endif
                             @if (session('error'))
@@ -50,21 +50,41 @@
                             <form class="user" action="{{ route('actionregister') }}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="name"
-                                        placeholder="Full Name" name="name">
+                                    <input type="text"
+                                        class="form-control form-control-user @error('name') is-invalid @enderror"
+                                        id="name" placeholder="Full Name" name="name" required
+                                        value="{{ old('name') }}">
+                                    @error('name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="email"
-                                        placeholder="Email Address" name="email">
+                                    <input type="email"
+                                        class="form-control form-control-user  @error('email') is-invalid @enderror"
+                                        id="email" placeholder="Email Address" name="email" required
+                                        value="{{ old('email') }}">
+                                    @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
+                                <div class="form-group ">
+                                    <input type="password"
+                                        class="form-control form-control-user  @error('password') is-invalid @enderror"
+                                        id="password" placeholder="Password" name="password" required>
+                                    @error('password')
+                                        <div class="invalid-feedback ">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" id="password"
-                                            placeholder="Password" name="password">
-                                    </div>
-                                    <!-- <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div> -->
+                                    <input type="checkbox" class="ml-3" id="is_admin" name="is_admin" value="1">
+                                    <label for="is_admin" class="small ml-2 mt-2">Create an account as admin</label>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary btn-user btn-block">Register

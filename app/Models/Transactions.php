@@ -12,9 +12,11 @@ class Transactions extends Model
         'id',
         'id_customer',
         'id_product',
-        'total_price',
+        'amount',
         'address',
+        'email',
         'state',
+        'is_paid',
         'phone',
         'notes',
     ];

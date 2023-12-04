@@ -13,7 +13,8 @@ return new class extends Migration
             $table->id();
             $table->string('id_customer');
             $table->string('id_product');
-            $table->double('total_price');
+            $table->double('amount');
+            $table->boolean('is_paid');
             $table->string('address');
             $table->string('email');
             $table->string('state');

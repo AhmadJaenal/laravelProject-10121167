@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Transactions;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -11,30 +12,43 @@ use Illuminate\Support\Facades\Session;
 
 class TransactionController extends Controller
 {
-    public function createTransaction(Request $request)
+    public function createTransaction(Request $request, $id)
     {
-        // Mengambil data user dari session
-        $userData = session('userData');
+        $userData = auth()->user();
+        $product = Product::find($id);
+        $amount = $product->price;
+        try {
+            $transaction = Transactions::create([
+                'id_customer' => $userData->id,
+                'id_product' => $product->id,
+                'email' => $userData->email,
+                'amount' => $amount,
+                'fullname' => $request->name,
+                'is_paid' => 0,
+                'address' => $request->address,
+                'state' => $request->state,
+                'phone' => $request->phone,
+                'notes' => $request->notes,
+            ]);
 
-        if ($userData) {
-            try {
-                $transaction = Transactions::create([
-                    'id_customer' => $userData->id,
-                    'id_product' => $request->input('id_product'),
-                    'total_price' => $request->input('total_price'),
-                    'fullname' => $userData->name,
-                    'address' => $userData->address,
-                    'state' => $userData->state,
-                    'phone' => $userData->phone,
-                    'notes' => $request->input('notes'),
-                ]);
-
-                return redirect()->route('viewThankYouPage');
-            } catch (QueryException $e) {
-                return redirect('register');
-            }
-        } else {
-            return redirect('login')->with('error', 'Anda harus login untuk melakukan transaksi.');
+            return redirect()->route('viewThankYouPage');
+        } catch (QueryException $e) {
+            dd($e->getMessage());
         }
     }
+
+    // public function historyTransaction(Request $request, $id)
+    // {
+    //     $userData = auth()->user();
+    //     $product = Product::find($id);
+    //     $transaction = Transactions::find($userData->id);
+    //     $amount = $product->price;
+    //     dd($userData, $transaction);
+
+    //     // if ($product) {
+    //     //     return view('interface.cartpage', ['product' => $product]);
+    //     // } else {
+    //     //     return redirect()->route('product.index')->with('error', 'Produk tidak ditemukan.');
+    //     // }
+    // }
 }

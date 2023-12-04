@@ -30,7 +30,7 @@
                 @foreach ($products as $product)
                     @if ($product->brand == 'Under Armour')
                         <div class="col-12 col-md-4 col-lg-3 mb-5">
-                            <a class="product-item" href="{{ route('viewCheckoutPage') }}">
+                            <a class="product-item" href="viewCheckoutPage/{{ $product->id }}">
                                 <img src="{{ $product->url_image }}" class="img-fluid product-thumbnail">
                                 <h3 class="product-title">{{ $product->product_name }}</h3>
                                 <strong class="product-price">${{ $product->price }}</strong>
@@ -47,7 +47,7 @@
                 @foreach ($products as $product)
                     @if ($product->brand == 'Nike')
                         <div class="col-12 col-md-4 col-lg-3 mb-5">
-                            <a class="product-item" href="{{ route('viewCheckoutPage') }}">
+                            <a class="product-item" href="viewCheckoutPage/{{ $product->id }}">
                                 <img src="{{ $product->url_image }}" class="img-fluid product-thumbnail">
                                 <h3 class="product-title">{{ $product->product_name }}</h3>
                                 <strong class="product-price">${{ $product->price }}</strong>
@@ -64,7 +64,7 @@
                 @foreach ($products as $product)
                     @if ($product->brand == 'Adidas')
                         <div class="col-12 col-md-4 col-lg-3 mb-5">
-                            <a class="product-item" href="{{ route('viewCheckoutPage') }}">
+                            <a class="product-item" href="viewCheckoutPage/{{ $product->id }}">
                                 <img src="{{ $product->url_image }}" class="img-fluid product-thumbnail">
                                 <h3 class="product-title">{{ $product->product_name }}</h3>
                                 <strong class="product-price">${{ $product->price }}</strong>

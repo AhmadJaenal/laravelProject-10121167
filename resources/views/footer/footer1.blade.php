@@ -3,14 +3,15 @@
      <div class="container relative">
 
          <div class="shoes-img">
-             <img src="img/img_footer.png" alt="Image" class="img-fluid shoes-one" width="500px">
+             <img src="{{ asset('img/img_footer.png') }}" alt="Image" class="img-fluid shoes-one" width="500px">
          </div>
 
          <div class="row">
              <div class="col-lg-8">
                  <div class="subscription-form">
-                     <h3 class="d-flex align-items-center"><span class="me-1"><img src="img/envelope-outline.svg"
-                                 alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
+                     <h3 class="d-flex align-items-center"><span class="me-1"><img
+                                 src="{{ asset('img/envelope-outline.svg') }}" alt="Image"
+                                 class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
 
                      <form action="#" class="row g-3">
                          <div class="col-auto">

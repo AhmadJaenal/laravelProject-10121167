@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Transactions;
 use Illuminate\Http\Request;
 
 class InterfaceController extends Controller
@@ -31,14 +33,26 @@ class InterfaceController extends Controller
         return view('interface.contact');
     }
 
-    public function viewCheckoutPage()
+    public function viewCheckoutPage($id)
     {
-        return view('interface.checkout');
+        $product = Product::find($id);
+        return view('interface.checkout', compact('product'));
     }
 
-    public function viewCartPage()
+    public function viewCartPage($id_customer)
     {
-        return view('interface.cartpage');
+        $userData = auth()->user();
+        $transactions = Transactions::where('id_customer', $id_customer)->get();
+        $products = [];
+        foreach ($transactions as $transaction) {
+            $productId = $transaction->id_product;
+            $product = Product::find($productId);
+            if ($product) {
+                $products[] = $product;
+            }
+        }
+
+        return view('interface.cartpage', compact('transactions', 'userData', 'products'));
     }
 
     public function viewThankYouPage()

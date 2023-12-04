@@ -14,8 +14,8 @@
                 <li class="nav-item {{ request()->routeIs('viewLandingPage') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('viewLandingPage') }}">Home</a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('fetchData') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('fetchData') }}">Shop</a>
+                <li class="nav-item {{ request()->routeIs('viewShopPage') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('viewShopPage') }}">Shop</a>
                 </li>
                 <li class="nav-item {{ request()->is('viewAboutPage') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('viewAboutPage') }}">About us</a>
@@ -30,7 +30,6 @@
                     <a class="nav-link" href="{{ route('viewContactPage') }}">Contact us</a>
                 </li>
             </ul>
-
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                 <div class="btn-group mx-4">
                     @auth
@@ -39,20 +38,30 @@
                             {{ auth()->user()->name }}
                         </a>
                     @else
-                        <img src="img/icon_user.svg" width="20px" data-bs-toggle="dropdown">
+                        <img src="{{ asset('img/icon_user.svg') }}" width="20px" data-bs-toggle="dropdown">
                     @endauth
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Setting</a></li>
                         @auth
-                            <li><a class="dropdown-item" href="/">Log Out</a></li>
+                            <form action="{{ route('actionlogout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item">
+                                    <i class="bi bi-box-arrow-rigth"> Log Out</i>
+                                </button>
+                            </form>
                         @else
-                            <li><a class="dropdown-item" href="/">Log In</a></li>
+                            <form action="{{ route('login') }}" method="get">
+                                @csrf
+                                <button type="submit" class="dropdown-item">
+                                    <i class="bi bi-box-arrow-rigth"> Log In</i>
+                                </button>
+                            </form>
                         @endauth
                     </ul>
                 </div>
-                <li><a class="nav-link" href="{{ route('viewCartPage') }}"><img src="img/icon_cart.svg"
-                            width="20px"></a></li>
+                <li><a class="nav-link" href="viewCartPage/{{ auth()->user()->id }}"><img
+                            src="{{ asset('img/icon_cart.svg') }}" width="20px"></a></li>
             </ul>
         </div>
     </div>

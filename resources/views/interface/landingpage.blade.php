@@ -30,14 +30,10 @@
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt">
-                        @auth
-                            <h1>{{ auth()->user()->name }}</h1>
-                        @else
-                            <h1>Tamu</h1>
-                        @endauth
                         <h1>Elevate Your Game<span clsas="d-block"> Elevate Your Life.</span></h1>
                         <p class="mb-4">Find a complete collection of high-quality exercise equipment at Gearo
-                            We provide the best equipment to help you achieve your fitness goals. From cardio equipment
+                            We provide the best equipment to help you achieve your fitness goals. From cardio
+                            equipment
                             to
                             training accessories, we support your journey to a healthy and active life.</p>
                         <p>
@@ -72,9 +68,9 @@
 
                 <!-- Start Column 2 -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                    <a class="product-item" href="cart.html">
+                    <a class="product-item" href="{{ route('viewShopPage') }}">
                         <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5d5b15c1-c94e-42b8-b8cc-b3e4b5ab7ea2/air-max-90-ltr-older-shoes-9xnt2B.png"
-                            class="img-fluid product-thumbnail">
+                            class="img-fluid product-thumbnail" priority="high">
                         <h3 class="product-title">Nike Air Max 90 LTR</h3>
                         <strong class="product-price">$85.00</strong>
 
@@ -87,7 +83,7 @@
 
                 <!-- Start Column 3 -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                    <a class="product-item" href="cart.html">
+                    <a class="product-item" href="{{ route('viewShopPage') }}">
                         <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/04d297c1-ed00-4638-96a8-da4765bc429e/air-max-90-ltr-se-older-shoes-PSfn6G.png"
                             class="img-fluid product-thumbnail">
                         <h3 class="product-title">Nike Air Zoom Pegasus 38</h3>
@@ -102,7 +98,7 @@
 
                 <!-- Start Column 4 -->
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                    <a class="product-item" href="cart.html">
+                    <a class="product-item" href="{{ route('viewShopPage') }}">
                         <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/809ce125-ae7f-487f-96bd-d863912c5dd0/lebron-xx-se-older-basketball-shoes-r46cM9.png"
                             class="img-fluid product-thumbnail">
                         <h3 class="product-title">Nike Ultrafly</h3>

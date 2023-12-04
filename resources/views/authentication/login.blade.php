@@ -52,8 +52,8 @@
                                             <input type="email"
                                                 class="form-control form-control-user 
                                                 @error('email') is-invalid @enderror"
-                                                id="email" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." name="email" autofocus required>
+                                                id="email" name="email" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address..." autofocus required>
                                             @error('email')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" id="password"
-                                                placeholder="Password" name="password" required>
+                                                name="password" placeholder="Password" required>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
