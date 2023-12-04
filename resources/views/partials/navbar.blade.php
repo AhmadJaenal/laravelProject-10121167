@@ -60,8 +60,10 @@
                         @endauth
                     </ul>
                 </div>
-                <li><a class="nav-link" href="viewCartPage/{{ auth()->user()->id }}"><img
-                            src="{{ asset('img/icon_cart.svg') }}" width="20px"></a></li>
+                @auth
+                    <li><a class="nav-link" href="{{ route('viewCartPage', ['id' => auth()->user()->id]) }}"><img
+                                src="{{ asset('img/icon_cart.svg') }}" width="20px"></a></li>
+                @endauth
             </ul>
         </div>
     </div>

@@ -37,18 +37,20 @@ class TransactionController extends Controller
         }
     }
 
-    // public function historyTransaction(Request $request, $id)
-    // {
-    //     $userData = auth()->user();
-    //     $product = Product::find($id);
-    //     $transaction = Transactions::find($userData->id);
-    //     $amount = $product->price;
-    //     dd($userData, $transaction);
 
-    //     // if ($product) {
-    //     //     return view('interface.cartpage', ['product' => $product]);
-    //     // } else {
-    //     //     return redirect()->route('product.index')->with('error', 'Produk tidak ditemukan.');
-    //     // }
-    // }
+    public function transactionChecking($id)
+    {
+        $transaction = Transactions::findOrFail($id);
+
+        $transaction->update(['is_paid' => false]);
+        return back();
+    }
+
+    public function transactionSuccess($id)
+    {
+        $transaction = Transactions::findOrFail($id);
+
+        $transaction->update(['is_paid' => true]);
+        return back();
+    }
 }

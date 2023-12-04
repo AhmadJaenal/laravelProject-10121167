@@ -36,3 +36,5 @@ Route::get('viewShopPage', [ProductController::class, 'fetchData'])->name('viewS
 
 // TRANSACTION
 Route::post('createTransaction/{id}', [TransactionController::class, 'createTransaction'])->name('createTransaction');
+Route::post('transactionChecking/{id}', [TransactionController::class, 'transactionChecking'])->name('transactionChecking');
+Route::post('transactionSuccess/{id}', [TransactionController::class, 'transactionSuccess'])->name('transactionSuccess');

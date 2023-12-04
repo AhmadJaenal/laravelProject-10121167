@@ -45,46 +45,65 @@
     <div class="untree_co-section before-footer-section">
         <div class="container">
             <div class="row mb-5">
-                <form class="col-md-12" method="post">
 
-                    <div class="site-blocks-table">
-                        <table class="table">
-                            <thead>
+                <div class="site-blocks-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="product-thumbnail">Image</th>
+                                <th class="product-name">Brand</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-total">Total</th>
+                                <th class="product-remove">Payment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($products as $product)
                                 <tr>
-                                    <th class="product-thumbnail">Image</th>
-                                    <th class="product-name">Brand</th>
-                                    <th class="product-price">Price</th>
-                                    <th class="product-total">Total</th>
-                                    <th class="product-remove">Payment</th>
+                                    <td class="product-thumbnail">
+                                        <img src="{{ $product->url_image }}" alt="Image" class="img-fluid">
+                                    </td>
+                                    <td class="product-name">
+                                        <h2 class="h5 text-black">{{ $product->brand }}</h2>
+                                    </td>
+                                    <td>{{ $product->price }}</td>
+                                    @php
+                                        $transaction = $transactions->where('id_product', $product->id)->first();
+                                    @endphp
+                                    <td>${{ $transaction->amount }}</td>
+                                    @if ($transaction->is_paid)
+                                        <td>Success</td>
+                                    @else
+                                        <td>Checking</td>
+                                    @endif
+                                    <td>
+                                        <div class="btn-group mx-4">
+                                            <p data-bs-toggle="dropdown">Clik for update</p>
+                                            <ul class="dropdown-menu">
+                                                <form
+                                                    action="{{ route('transactionChecking', ['id' => $transaction->id]) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    <button type="submit" class="dropdown-item">
+                                                        <i class="bi bi-box-arrow-rigth">Checking </i>
+                                                    </button>
+                                                </form>
+                                                <form
+                                                    action="{{ route('transactionSuccess', ['id' => $transaction->id]) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    <button type="submit" class="dropdown-item">
+                                                        <i class="bi bi-box-arrow-rigth">Success </i>
+                                                    </button>
+                                                </form>
+                                            </ul>
+                                        </div>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($products as $product)
-                                    <tr>
-                                        <td class="product-thumbnail">
-                                            <img src="{{ $product->url_image }}" alt="Image" class="img-fluid">
-                                        </td>
-                                        <td class="product-name">
-                                            <h2 class="h5 text-black">{{ $product->brand }}</h2>
-                                        </td>
-                                        <td>{{ $product->price }}</td>
-                                        @php
-                                            $transaction = $transactions->where('id_product', $product->id)->first();
-                                        @endphp
-                                        <td>${{ $transaction->amount }}</td>
-                                        <td>
-                                            @if ($transaction->is_paid == 0)
-                                                Checking
-                                            @else
-                                                Success
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
