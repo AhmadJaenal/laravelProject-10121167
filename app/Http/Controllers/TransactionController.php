@@ -24,7 +24,9 @@ class TransactionController extends Controller
                 'email' => $userData->email,
                 'amount' => $amount,
                 'fullname' => $request->name,
-                'is_paid' => 0,
+                'is_paid' => 'Checking',
+                'detail_address' => $request->detail_address,
+                'postal_code' => $request->postal_code,
                 'address' => $request->address,
                 'state' => $request->state,
                 'phone' => $request->phone,
@@ -37,12 +39,11 @@ class TransactionController extends Controller
         }
     }
 
-
     public function transactionChecking($id)
     {
         $transaction = Transactions::findOrFail($id);
 
-        $transaction->update(['is_paid' => false]);
+        $transaction->update(['is_paid' => 'Checking']);
         return back();
     }
 
@@ -50,7 +51,43 @@ class TransactionController extends Controller
     {
         $transaction = Transactions::findOrFail($id);
 
-        $transaction->update(['is_paid' => true]);
+        $transaction->update(['is_paid' => 'Success']);
         return back();
+    }
+
+    public function transactionProcess($id)
+    {
+        $transaction = Transactions::findOrFail($id);
+
+        $transaction->update(['is_paid' => 'Process']);
+        return back();
+    }
+
+    public function updateTransaction(Request $request, $id)
+    {
+        $transaction = Transactions::find($id);
+
+        if (!$transaction) {
+            return redirect()->route('viewThankYouPage')->with('error', 'Transaksi tidak ditemukan.');
+        }
+
+        $product = Product::find($transaction->id_product);
+        $userData = auth()->user();
+
+        try {
+            $transaction->update([
+                'fullname' => $request->name,
+                'detail_address' => $request->detail_address,
+                'postal_code' => $request->postal_code,
+                'address' => $request->address,
+                'state' => $request->state,
+                'phone' => $request->phone,
+                'notes' => $request->notes,
+            ]);
+
+            return redirect()->route('viewThankYouPage')->with('success', 'Transaksi berhasil diperbarui.');
+        } catch (QueryException $e) {
+            return redirect()->route('viewThankYouPage')->with('error', $e->getMessage());
+        }
     }
 }

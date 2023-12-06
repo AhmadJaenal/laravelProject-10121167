@@ -71,34 +71,52 @@
                                         $transaction = $transactions->where('id_product', $product->id)->first();
                                     @endphp
                                     <td>${{ $transaction->amount }}</td>
-                                    @if ($transaction->is_paid)
-                                        <td>Success</td>
+                                    <td>{{ $transaction->is_paid }}</td>
+
+                                    @if (auth()->user()->is_admin == 1)
+                                        <td>
+                                            <div class="btn-group mx-4">
+                                                <p data-bs-toggle="dropdown">Clik for update</p>
+                                                <ul class="dropdown-menu">
+                                                    <form
+                                                        action="{{ route('transactionChecking', ['id' => $transaction->id]) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        <button type="submit" class="dropdown-item">
+                                                            <i class="bi bi-box-arrow-rigth">Checking </i>
+                                                        </button>
+                                                    </form>
+                                                    <form
+                                                        action="{{ route('transactionProcess', ['id' => $transaction->id]) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        <button type="submit" class="dropdown-item">
+                                                            <i class="bi bi-box-arrow-rigth">Process </i>
+                                                        </button>
+                                                    </form>
+                                                    <form
+                                                        action="{{ route('transactionSuccess', ['id' => $transaction->id]) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        <button type="submit" class="dropdown-item">
+                                                            <i class="bi bi-box-arrow-rigth">Success </i>
+                                                        </button>
+                                                    </form>
+                                                </ul>
+                                            </div>
+                                        </td>
                                     @else
-                                        <td>Checking</td>
+                                        @if ($transaction->is_paid != 'success' or $transaction->is_paid != 'process')
+                                            <td>
+                                                <a href="/viewEditTransaction?id_tr={{ $transaction->id }}&id_product={{ $product->id }}"
+                                                    class="btn btn-secondary me-2">Edit</a>
+                                            </td>
+                                        @else
+                                            <td>
+                                                Update is not available
+                                            </td>
+                                        @endif
                                     @endif
-                                    <td>
-                                        <div class="btn-group mx-4">
-                                            <p data-bs-toggle="dropdown">Clik for update</p>
-                                            <ul class="dropdown-menu">
-                                                <form
-                                                    action="{{ route('transactionChecking', ['id' => $transaction->id]) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    <button type="submit" class="dropdown-item">
-                                                        <i class="bi bi-box-arrow-rigth">Checking </i>
-                                                    </button>
-                                                </form>
-                                                <form
-                                                    action="{{ route('transactionSuccess', ['id' => $transaction->id]) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    <button type="submit" class="dropdown-item">
-                                                        <i class="bi bi-box-arrow-rigth">Success </i>
-                                                    </button>
-                                                </form>
-                                            </ul>
-                                        </div>
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

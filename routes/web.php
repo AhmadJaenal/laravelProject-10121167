@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\InterfaceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
+use App\Models\Transactions;
 use Illuminate\Support\Facades\Route;
 
 // LOGIN
@@ -38,3 +39,6 @@ Route::get('viewShopPage', [ProductController::class, 'fetchData'])->name('viewS
 Route::post('createTransaction/{id}', [TransactionController::class, 'createTransaction'])->name('createTransaction');
 Route::post('transactionChecking/{id}', [TransactionController::class, 'transactionChecking'])->name('transactionChecking');
 Route::post('transactionSuccess/{id}', [TransactionController::class, 'transactionSuccess'])->name('transactionSuccess');
+Route::post('transactionProcess/{id}', [TransactionController::class, 'transactionProcess'])->name('transactionProcess');
+Route::get('viewEditTransaction', [InterfaceController::class, 'viewEditTransaction'])->name('viewEditTransaction');
+Route::post('updateTransaction/{id}', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');

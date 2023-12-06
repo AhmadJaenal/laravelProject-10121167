@@ -21,18 +21,13 @@
 
 <body>
 
-
-    <!-- Start Header/Navigation -->
-    @include('partials.navbar')
-    <!-- End Header/Navigation -->
-
     <!-- Start Hero Section -->
     <div class="hero">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt">
-                        <h1>Checkout</h1>
+                        <h1>Edit Transaction</h1>
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -44,7 +39,7 @@
     <!-- End Hero Section -->
 
     <div class="untree_co-section">
-        <form action="{{ route('createTransaction', ['id' => $product->id]) }}" method="post">
+        <form action="updateTransaction/{{ $transaction->id }}" method="post">
             @csrf
             <div class="container">
                 <div class="row mb-5">
@@ -69,27 +64,29 @@
                                     <label for="address" class="text-black">Address<span
                                             class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="address" name="address"
-                                        placeholder="Street address" required>
+                                        placeholder="Street address" value="{{ $transaction->address }}">
                                 </div>
+
                             </div>
 
                             <div class="form-group mt-3">
                                 <input type="text" class="form-control"
                                     placeholder="Apartment, suite, unit etc. (optional)" name="detail_address"
-                                    id="detail_address">
+                                    id="detail_address" value="{{ $transaction->detail_address }}">
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label for="state" class="text-black">State<span
                                             class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="state" name="state">
+                                    <input type="text" class="form-control" id="state" name="state"
+                                        value="{{ $transaction->state }}">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="postal_code" class="text-black">Posta / Zip <span
+                                    <label for="c_postal_zip" class="text-black">Posta / Zip <span
                                             class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="postal_code" name="postal_code"
-                                        required maxlength="5">
+                                        value="{{ $transaction->postal_code }}" maxlength="5">
                                 </div>
                             </div>
 
@@ -104,14 +101,14 @@
                                     <label for="phone" class="text-black">Phone <span
                                             class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="phone" name="phone"
-                                        placeholder="Phone Number" required>
+                                        placeholder="Phone Number" value="{{ $transaction->phone }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="c_order_notes" class="text-black">Order Notes</label>
                                 <textarea id="notes" name="notes" cols="30" rows="5" class="form-control"
-                                    placeholder="Write your notes here..."></textarea>
+                                    placeholder="Write your notes here...">{{ $transaction->notes }}</textarea>
                             </div>
 
                         </div>
@@ -178,8 +175,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-black btn-lg py-3 btn-block">Place
-                                            Order</button>
+                                        <button type="submit"
+                                            class="btn btn-black btn-lg py-3 btn-block">Save</button>
                                     </div>
                                 </div>
                             </div>

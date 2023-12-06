@@ -55,6 +55,19 @@ class InterfaceController extends Controller
         return view('interface.cartpage', compact('transactions', 'userData', 'products'));
     }
 
+    public function viewEditTransaction(Request $request)
+    {
+        $id_tr = $request->query('id_tr');
+        $id_product = $request->query('id_product');
+
+        $transaction = Transactions::find($id_tr);
+        $product = Product::find($id_product);
+
+        return view('interface.editpage', compact('transaction', 'product'));
+    }
+
+
+
     public function viewThankYouPage()
     {
         return view('interface.thankyou');
