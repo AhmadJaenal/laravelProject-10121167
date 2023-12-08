@@ -67,7 +67,7 @@ class AuthManager extends Controller
                 'email' => 'required|email:dns|unique:users|max:255',
                 'name' => 'required',
                 'is_admin' => 'boolean',
-                'password' => 'required|min:4|max:255',
+                'password' => 'required|min:8|max:255',
             ]);
             $validateData['password'] = Hash::make($validateData['password']);
             User::create($validateData);
@@ -87,8 +87,6 @@ class AuthManager extends Controller
             return redirect('register');
         }
     }
-
-
     // End Register Controller
 
     // Validate Email Controller
@@ -127,60 +125,3 @@ class AuthManager extends Controller
     }
     // End Forgot Password Controller
 }
-
-
-// public function actionregister(Request $request)
-// {
-//     try {
-//         $user = User::create([
-//             'email' => $request->email,
-//             'name' => $request->name,
-//             'password' => Hash::make($request->password),
-//         ]);
-
-//         Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
-//         return redirect('register');
-//     } catch (QueryException $e) {
-//         $errorCode = $e->errorInfo[1];
-
-//         if ($errorCode == 1062) {
-//             Session::flash('error', 'Gagal melakukan register. Email sudah terdaftar.');
-//         } else {
-//             Session::flash('error', 'Gagal melakukan register. Terjadi kesalahan.');
-//         }
-
-//         return redirect('register');
-//     }
-// }
-
-// public function actionregister(Request $request)
-    // {
-        // try {
-        // $request->validate([
-            // 'email' => 'required|max:255',
-            // 'name' => 'required',
-            // 'is_admin' => 'required|boolean',
-            // 'email' => 'required|email:dns|unique:users',
-            // 'password' => 'required:4|max:255',
-        // ]);
-
-        // $validateData['password'] = Hash::make($validateData['password']);
-
-        // User::create($validateData);
-
-        // Session::flash('success', 'Register Berhasil');
-        // return redirect('register');
-        // dd($request);
-        // } catch (QueryException $e) {
-        // $errorCode = $e->errorInfo[1];
-
-        // if ($errorCode == 1062) {
-        //     Session::flash('error', 'Gagal melakukan register. Email sudah terdaftar.');
-        // } else {
-        //     Session::flash('error', 'Gagal melakukan register. Terjadi kesalahan.');
-        // }
-        // Session::flash('error', $e);
-
-        // return redirect('register');
-        // }
-    // }

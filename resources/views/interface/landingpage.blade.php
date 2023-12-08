@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="hero-img-wrap">
-                        <img src="img/hero12.png" class="img-fluid", width="680px">
+                        <img src="img/hero12.png" class="img-fluid" width="680px" pr>
                     </div>
                 </div>
             </div>

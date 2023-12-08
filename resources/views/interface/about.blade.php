@@ -131,13 +131,12 @@
                 <!-- Start Column 1 -->
                 <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
                     <img src="img/person_1.jpg" class="img-fluid mb-5">
-                    <h3 clas><a href="#"><span class="">Lawson</span> Arnold</a></h3>
-                    <span class="d-block position mb-4">CEO, Founder, Atty.</span>
-                    <p>Separated they live in.
-                        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-                        ocean.</p>
-                    <p class="mb-0"><a href="#" class="more dark">Learn More <span
-                                class="icon-arrow_forward"></span></a></p>
+                    <h3 clas><a href="#"><span class="">Samuel</span> Turner</a></h3>
+                    <span class="d-block position mb-4">Chief Innovation Officer</span>
+                    <p>"Leading the footwear world, Dr. Samuel Turner, our Chief Innovation Officer, aims to bring
+                        top-notch quality and innovation to you. We coexist in Geanore, on the edge of
+                        Semantics."
+                    </p>
                 </div>
                 <!-- End Column 1 -->
 
@@ -145,13 +144,10 @@
                 <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
                     <img src="img/person_2.jpg" class="img-fluid mb-5">
 
-                    <h3 clas><a href="#"><span class="">Jeremy</span> Walker</a></h3>
-                    <span class="d-block position mb-4">CEO, Founder, Atty.</span>
-                    <p>Separated they live in.
-                        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-                        ocean.</p>
-                    <p class="mb-0"><a href="#" class="more dark">Learn More <span
-                                class="icon-arrow_forward"></span></a></p>
+                    <h3 clas><a href="#"><span class=""> Alexander </span> White</a></h3>
+                    <span class="d-block position mb-4">CTO</span>
+                    <p>"Half of success lies in shared spirit. As the CTO, Alexander White is committed to
+                        creating an extraordinary shoe community in Geanore, on the coast of Semantics."</p>
 
                 </div>
                 <!-- End Column 2 -->
@@ -159,13 +155,13 @@
                 <!-- Start Column 3 -->
                 <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
                     <img src="img/person_3.jpg" class="img-fluid mb-5">
-                    <h3 clas><a href="#"><span class="">Patrik</span> White</a></h3>
-                    <span class="d-block position mb-4">CEO, Founder, Atty.</span>
-                    <p>Separated they live in.
-                        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-                        ocean.</p>
-                    <p class="mb-0"><a href="#" class="more dark">Learn More <span
-                                class="icon-arrow_forward"></span></a></p>
+                    <h3 clas><a href="#"><span class="">Olivia</span> Martinez</a></h3>
+                    <span class="d-block position mb-4">Chief Innovation Officer.</span>
+                    <p>"At the edge of Semantics, in Geanore, Olivia Martinez, our President and Founder,
+                        believes
+                        in the philosophy that every small step leads us to success. As a founder, he is committed to
+                        providing the best."
+                    </p>
                 </div>
                 <!-- End Column 3 -->
 
@@ -173,13 +169,10 @@
                 <div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
                     <img src="img/person_4.jpg" class="img-fluid mb-5">
 
-                    <h3 clas><a href="#"><span class="">Kathryn</span> Ryan</a></h3>
+                    <h3 clas><a href="#"><span class="">Emma </span> Johnson</a></h3>
                     <span class="d-block position mb-4">CEO, Founder, Atty.</span>
-                    <p>Separated they live in.
-                        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-                        ocean.</p>
-                    <p class="mb-0"><a href="#" class="more dark">Learn More <span
-                                class="icon-arrow_forward"></span></a></p>
+                    <p>"As the visionary CEO and founder, Emma Johnson believes in the power of unity and collaboration.
+                        In Geanore, on the coast of Semantics, we thrive together as one."</p>
 
 
                 </div>

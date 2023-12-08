@@ -7,6 +7,12 @@ use App\Http\Controllers\TransactionController;
 use App\Models\Transactions;
 use Illuminate\Support\Facades\Route;
 
+
+
+// NIM      : 10121167
+// Nama     : Ahmad Jaenal Aripin
+// Kelas    : IF-5
+
 // LOGIN
 Route::get('login', [AuthManager::class, 'login'])->name('login')->middleware('guest');
 Route::post('actionlogin', [AuthManager::class, 'actionlogin'])->name('actionlogin');
@@ -29,16 +35,23 @@ Route::get('viewServicePage', [InterfaceController::class, 'viewServicePage'])->
 Route::get('viewBlogPage', [InterfaceController::class, 'viewBlogPage'])->name('viewBlogPage');
 Route::get('viewContactPage', [InterfaceController::class, 'viewContactPage'])->name('viewContactPage');
 Route::get('viewCheckoutPage/{id}', [InterfaceController::class, 'viewCheckoutPage'])->name('viewCheckoutPage')->middleware('auth');
-Route::get('viewCartPage/{id}', [InterfaceController::class, 'viewCartPage'])->name('viewCartPage');
 Route::get('viewThankYouPage', [InterfaceController::class, 'viewThankYouPage'])->name('viewThankYouPage');
 
 // PRODUCT
 Route::get('viewShopPage', [ProductController::class, 'fetchData'])->name('viewShopPage');
+Route::get('viewAddProduct', [InterfaceController::class, 'viewAddProduct'])->name('viewAddProduct');
+Route::post('addNewProduct', [ProductController::class, 'addNewProduct'])->name('addNewProduct');
+Route::get('deleteProduct/{id}', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
 
 // TRANSACTION
+Route::get('viewDashboardTransaction', [InterfaceController::class, 'viewDashboardTransaction'])->name('viewDashboardTransaction');
+Route::get('viewEditTransaction', [InterfaceController::class, 'viewEditTransaction'])->name('viewEditTransaction');
+Route::get('viewTransactionPage/{id}', [InterfaceController::class, 'viewTransactionPage'])->name('viewTransactionPage');
+Route::get('viewDetailTransaction', [TransactionController::class, 'viewDetailTransaction'])->name('viewDetailTransaction');
+
 Route::post('createTransaction/{id}', [TransactionController::class, 'createTransaction'])->name('createTransaction');
 Route::post('transactionChecking/{id}', [TransactionController::class, 'transactionChecking'])->name('transactionChecking');
 Route::post('transactionSuccess/{id}', [TransactionController::class, 'transactionSuccess'])->name('transactionSuccess');
 Route::post('transactionProcess/{id}', [TransactionController::class, 'transactionProcess'])->name('transactionProcess');
-Route::get('viewEditTransaction', [InterfaceController::class, 'viewEditTransaction'])->name('viewEditTransaction');
 Route::post('updateTransaction/{id}', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');
+Route::get('deleteTransaction{id}', [TransactionController::class, 'deleteTransaction'])->name('deleteTransaction');

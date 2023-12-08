@@ -82,9 +82,13 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group row">
-                                    <input type="checkbox" class="ml-3" id="is_admin" name="is_admin" value="1">
-                                    <label for="is_admin" class="small ml-2 mt-2">Create an account as admin</label>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox small">
+                                        <input type="checkbox" class="custom-control-input" id="is_admin"
+                                            name="is_admin" value="1">
+                                        <label class="custom-control-label" for="is_admin">Create an account as
+                                            admin</label>
+                                    </div>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary btn-user btn-block">Register

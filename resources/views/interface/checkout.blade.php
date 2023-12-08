@@ -173,6 +173,8 @@
                                                 <p class="mb-0">3. Select to BNI account.</p>
                                                 <p class="mb-0">4. Insert the payment account number.</p>
                                                 <p class="mb-0">5. Insert the payable amount, then confirm.</p>
+                                                <p class="mb-0">6. Send proof of payment to WhatsApp 09834728145
+                                                    and the transaction will be processed!</p>
                                             </div>
                                         </div>
                                     </div>

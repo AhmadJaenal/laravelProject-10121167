@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Transactions;
+use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,19 @@ class TransactionController extends Controller
         } catch (QueryException $e) {
             dd($e->getMessage());
         }
+    }
+    public function viewDetailTransaction(Request $request)
+    {
+
+        $id_tr = $request->query('id_tr');
+        $id_product = $request->query('id_product');
+
+        $transaction = Transactions::find($id_tr);
+        $product = Product::find($id_product);
+
+        $userData = User::find($transaction->id_customer);
+
+        return view('interface.detailtransaction', compact('transaction', 'product', 'userData'));
     }
 
     public function transactionChecking($id)
@@ -89,5 +103,12 @@ class TransactionController extends Controller
         } catch (QueryException $e) {
             return redirect()->route('viewThankYouPage')->with('error', $e->getMessage());
         }
+    }
+    public function deleteTransaction($id)
+    {
+        $transaction = Transactions::findOrFail($id);
+        $transaction->delete();
+
+        return back()->with('success', 'Transaction deleted successfully');
     }
 }

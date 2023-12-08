@@ -61,8 +61,13 @@
                     </ul>
                 </div>
                 @auth
-                    <li><a class="nav-link" href="{{ route('viewCartPage', ['id' => auth()->user()->id]) }}"><img
-                                src="{{ asset('img/icon_cart.svg') }}" width="20px"></a></li>
+                    @if (auth()->user()->is_admin == 1)
+                        <li><a class="nav-link" href="{{ route('viewDashboardTransaction') }}"><img
+                                    src="{{ asset('img/icon_history.png') }}" width="20px"></a></li>
+                    @else
+                        <li><a class="nav-link" href="{{ route('viewCartPage', ['id' => auth()->user()->id]) }}"><img
+                                    src="{{ asset('img/icon_history.png') }}" width="20px"></a></li>
+                    @endif
                 @endauth
             </ul>
         </div>

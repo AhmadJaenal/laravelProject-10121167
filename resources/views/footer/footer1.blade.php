@@ -78,9 +78,9 @@
 
                      <div class="col-6 col-sm-6 col-md-3">
                          <ul class="list-unstyled">
-                             <li><a href="#">Nordic Chair</a></li>
-                             <li><a href="#">Kruzo Aero</a></li>
-                             <li><a href="#">Ergonomic Chair</a></li>
+                             <li><a href="#">Nike</a></li>
+                             <li><a href="#">Adidas</a></li>
+                             <li><a href="#">Under Armour</a></li>
                          </ul>
                      </div>
                  </div>

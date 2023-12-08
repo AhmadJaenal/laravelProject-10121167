@@ -39,7 +39,7 @@ class InterfaceController extends Controller
         return view('interface.checkout', compact('product'));
     }
 
-    public function viewCartPage($id_customer)
+    public function viewTransactionPage($id_customer)
     {
         $userData = auth()->user();
         $transactions = Transactions::where('id_customer', $id_customer)->get();
@@ -52,8 +52,24 @@ class InterfaceController extends Controller
             }
         }
 
-        return view('interface.cartpage', compact('transactions', 'userData', 'products'));
+        return view('interface.transaction', compact('transactions', 'userData', 'products'));
     }
+
+    public function viewDashboardTransaction()
+    {
+        $userData = auth()->user();
+        $transactions = Transactions::all();
+        $products = [];
+        foreach ($transactions as $transaction) {
+            $productId = $transaction->id_product;
+            $product = Product::find($productId);
+            if ($product) {
+                $products[] = $product;
+            }
+        }
+        return view('interface.transaction', compact('transactions', 'userData', 'products'));
+    }
+
 
     public function viewEditTransaction(Request $request)
     {
@@ -71,5 +87,10 @@ class InterfaceController extends Controller
     public function viewThankYouPage()
     {
         return view('interface.thankyou');
+    }
+
+    public function viewAddProduct()
+    {
+        return view('interface.addproduct');
     }
 }
