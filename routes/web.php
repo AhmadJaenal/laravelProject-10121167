@@ -7,8 +7,6 @@ use App\Http\Controllers\TransactionController;
 use App\Models\Transactions;
 use Illuminate\Support\Facades\Route;
 
-
-
 // NIM      : 10121167
 // Nama     : Ahmad Jaenal Aripin
 // Kelas    : IF-5
@@ -23,9 +21,9 @@ Route::get('register', [AuthManager::class, 'register'])->name('register');
 Route::post('actionregister', [AuthManager::class, 'actionregister'])->name('actionregister');
 
 //FORGOT PASSWORD
-Route::get('forgot', [AuthManager::class, 'forgot'])->name('forgot');
-Route::get('validateemail', [AuthManager::class, 'validateemail'])->name('validateemail');
-Route::post('resetpassword', [AuthManager::class, 'resetpassword'])->name('resetpassword');
+Route::get('forgot', [AuthManager::class, 'forgot'])->name('forgot')->middleware('guest');
+Route::get('validateemail', [AuthManager::class, 'validateemail'])->name('validateemail')->middleware('guest');
+Route::post('resetpassword', [AuthManager::class, 'resetpassword'])->name('resetpassword')->middleware('guest');
 Route::post('actionResetPassword', [AuthManager::class, 'actionResetPassword'])->name('actionResetPassword');
 
 // // INTERFACE

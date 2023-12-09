@@ -65,7 +65,8 @@
                         <li><a class="nav-link" href="{{ route('viewDashboardTransaction') }}"><img
                                     src="{{ asset('img/icon_history.png') }}" width="20px"></a></li>
                     @else
-                        <li><a class="nav-link" href="{{ route('viewCartPage', ['id' => auth()->user()->id]) }}"><img
+                        <li><a class="nav-link"
+                                href="{{ route('viewTransactionPage', ['id' => auth()->user()->id]) }}"><img
                                     src="{{ asset('img/icon_history.png') }}" width="20px"></a></li>
                     @endif
                 @endauth
