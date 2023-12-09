@@ -6,4 +6,8 @@ Link Url Project
 https://github.com/AhmadJaenal/laravelProject-10121167
 
 Catatan :
-Fitur reset password tidak berfungsi
+- Fitur reset password tidak berfungsi
+- Project ini dibuat dengan laravel versi 10.31.0 dan php versi 8.2.4
+- Untuk fitur add product url image yang dimasukan harus berasal dari internet. 
+  Untuk beberapa image yang sudah ada berasal dari Website Nike, Under Armour, Puma, Adidas, Brodo
+- Saat login bisa bertindak sebagai User atau Admin
