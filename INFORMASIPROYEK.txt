@@ -1,0 +1,9 @@
+Nama 	: Ahmad Jaenal Aripin
+NIM	: 10121167
+Kelas 	: IF5
+
+Link Url Project 
+https://github.com/AhmadJaenal/laravelProject-10121167
+
+Catatan :
+Fitur reset password tidak berfungsi
