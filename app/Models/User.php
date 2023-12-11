@@ -12,7 +12,9 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $table = 'users';
-    protected $primaryKey = 'id';
+    // protected $primaryKey = 'id';
+    protected $guarded = ['id'];
 
-    protected $fillable = ['name', 'password', 'is_admin', 'email', 'verify_key', 'active'];
+
+    // protected $fillable = ['name', 'password', 'is_admin', 'email', 'verify_key', 'active'];
 }
