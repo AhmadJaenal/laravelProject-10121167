@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('id_product');
             $table->double('amount');
             $table->string('is_paid');
-            $table->int('postal_code');
-            $table->int('detail_address')->nullable();
+            $table->integer('postal_code');
+            $table->integer('detail_address')->nullable();
             $table->string('address');
             $table->string('email');
             $table->string('state');
